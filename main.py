@@ -2,10 +2,12 @@ import sys
 import rsync_algorithm as rsync
 
 def main(argv):
-    if (len(argv) <= 1):
+    if (len(argv) <= 2):
         err_msg = "\n\tUsage: " + argv[0] + " <src-dir> <dst-dir>\n"
         sys.exit(err_msg)
-    rsync.rsync()
+    source = argv[1]
+    destin = argv[2]
+    rsync.rsync(source, destin)
 
-argv=sys.argv
-main(argv)
+# ENTRY POINT
+main ( sys.argv )
