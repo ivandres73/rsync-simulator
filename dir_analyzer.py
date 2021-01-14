@@ -27,5 +27,11 @@ class Directory:
 
     def getDirSize(self, dir_path):
         temp_dir = self.dir_path + dir_path
-        print(temp_dir, "= ")
-        list_items(temp_dir)
+        with os.scandir(dir_path) as entries:
+            for entry in entries:
+                print(entry.name)
+                if entry.is_file():
+                    print(os.stat(entry).st_size)
+                else:
+                    print ("entry.name=",(dir_path + entry.name + '/'))
+                    self.getDirSize((dir_path + entry.name + '/'))
