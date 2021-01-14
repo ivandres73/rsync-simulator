@@ -30,10 +30,7 @@ class Directory:
         with os.scandir(dir_path) as entries:
             for entry in entries:
                 if entry.is_file():
-                    print(entry.name, ", ",end='', sep='')
-                    print(os.stat(entry).st_size)
                     size += os.stat(entry).st_size
                 else:
-                    print ((dir_path + entry.name + '/'))
                     size = self.getDirSize((dir_path + entry.name + '/'), size)
         return size
