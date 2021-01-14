@@ -6,6 +6,6 @@ def rsync(source, destin):
     src_dirs = d1.getDirs()
     print(src_dirs)
     for i in src_dirs:
-        print(d1.getDirSize(i.name + '/'))
+        print(d1.getDirSize(source + i.name + '/'))
     # total = d1.getDirSize('prueba/')
     # print("total =", total)
