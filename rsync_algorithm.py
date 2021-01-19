@@ -20,8 +20,25 @@ def rsync(source, destin):
     # check if same size to avoid any processing
     if ( d1.getDirSize(d1.getName()) == d2.getDirSize(d2.getName()) ):
         print("\n\tthere are no files to update, aborting...")
+        return
 
     # sizes aren't the same, check which ones
+    for s_dir in src_dirs:
+        for d_dir in dst_dirs:
+            if s_dir.name == d_dir.name:
+                src_absolute_name = source + s_dir.name + '/'
+                dst_absolute_name = destin + d_dir.name + '/'
+                if d1.getDirSize(src_absolute_name) != d2.getDirSize(dst_absolute_name):
+                    print(s_dir.name, " has not same size as", d_dir.name) # process which files/dirs are different
+
+def rsync_update_dst_dir(sour, dest):
+    ## validate if file is in destin
+
+    ## validate if file doesn't exist at all in destin
+
+    ## validate if directory is in destin (do a recursive call)
+
+    ## validate if directory doesnt exist at all in destin
     for s_dir in src_dirs:
         for d_dir in dst_dirs:
             if s_dir.name == d_dir.name:
