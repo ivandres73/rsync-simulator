@@ -7,6 +7,10 @@ def main(argv):
         sys.exit(err_msg)
     source = argv[1]
     destin = argv[2]
+    if not(source.endswith('/')):
+        source = source + "/"
+    if not(destin.endswith('/')):
+        destin = destin + "/"
     rsync.rsync(source, destin)
 
 # ENTRY POINT
