@@ -26,6 +26,15 @@ class Directory:
                 dirs.append(entry) #append() modifies original list
         return dirs
 
+    def getFiles(self):
+        items_copy = os.scandir(self.dir_path) #cloning self.items
+        files = []
+        for entry in items_copy:
+            print("file:")
+            if entry.is_file():
+                files.append(entry) #append() modifies original list
+        return files
+
     def getDirSize(self, dir_path, size=0):
         temp_dir = self.dir_path + dir_path
         with os.scandir(dir_path) as entries:
