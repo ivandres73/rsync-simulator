@@ -18,11 +18,12 @@ class Directory:
         return self.dir_path
 
     def getDirs(self):
+        items_copy = os.scandir(self.dir_path) #cloning self.items
         dirs = []
-        with self.items as entries:
-            for entry in entries:
-                if entry.is_dir():
-                    dirs.append(entry)
+        for entry in items_copy:
+            print("dir:")
+            if entry.is_dir():
+                dirs.append(entry) #append() modifies original list
         return dirs
 
     def getDirSize(self, dir_path, size=0):
